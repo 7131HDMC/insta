@@ -17,19 +17,15 @@ class Modals:
 
   #Get the notfication request modal 
   def notification(self):
-    try:
-      WebDriverWait(self.driver,60).until(EC.presence_of_element_located((By.XPATH, self.select.BOX_ALERT)))
-      campo_botao = self.driver.find_element_by_xpath(self.select.ALERT)
-      campo_botao.click()
-    except Exception:
-      return None
+    WebDriverWait(self.driver,60).until(EC.presence_of_element_located((By.XPATH, self.select.BOX_ALERT)))
+    campo_botao = self.driver.find_elements_by_css_selector(self.select.ALERT)
+    campo_botao.click()
+    
 
   def save_pass(self):
-    try:
-      WebDriverWait(self.driver,60).until(EC.presence_of_element_located((By.XPATH, self.select.xBOX)))
-      campo_botao = self.driver.find_element_by_xpath(self.select.xNO)
-      campo_botao.click()
-    except Exception:
-      return None
+    WebDriverWait(self.driver,60).until(EC.presence_of_element_located((By.XPATH, self.select.xBOX)))
+    campo_botao = self.driver.find_element_by_xpath(self.select.xNO)
+    campo_botao.click()
+
 
 

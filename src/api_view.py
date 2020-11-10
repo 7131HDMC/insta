@@ -14,11 +14,11 @@ class Instagram:
   firefox = 0
   select = 0
   def  __init__(self, site):
-    options = Options()
-    options.add_argument(' -P InstaBot -headless')
-    self.firefox = Firefox(executable_path='/home/monkey/Desktop/insta/InstagramAPI_QDA/geckodriver', options=options)
-    self.firefox.get(site)
     self.select = SelectorsConts()
+    options = Options()
+    options.headless = True
+    self.firefox = Firefox(executable_path=self.select.GECKO_PATH, options=options)
+    self.firefox.get(site)
     self.modals = Modals(self.firefox)
 
 
@@ -54,8 +54,10 @@ class Instagram:
 
   def getUserIndex(self):
     WebDriverWait(self.firefox,60).until(EC.presence_of_element_located((By.XPATH, self.select.BOX_USERS)))
-    users = self.firefox.find_element_by_xpath(self.select.LIST_UN)
-    print(users.size())
+    users = self.firefox.find_elements_by_css_selector(self.select.LIST_UN)
+    print(users.size)
+    help(users)
+    print(help(users))
 
   def ignore_alert(self):
     WebDriverWait(self.firefox,30).until(EC.presence_of_element_located((By.CLASS_NAME, self.select.BOX_ALERT)))
