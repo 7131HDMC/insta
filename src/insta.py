@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
-from cookie import Login 
+from storage import Login 
 from consts import SelectorsConts
 from components.modals import Modals
 
